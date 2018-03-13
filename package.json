@@ -1,0 +1,16 @@
+{
+  "name": "new-qazaq-latin",
+  "version": "1.0.7",
+  "main": "node_modules/expo/AppEntry.js",
+  "description": "This app help people learn Latin Language fast and easily",
+  "author": "Duisebay Yerkebulan Shokhanuli",
+  "private": true,
+  "dependencies": {
+    "expo": "^24.0.0",
+    "image-size": "^0.6.2",
+    "react": "16.0.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
+    "react-native-elements": "^0.18.5",
+    "react-navigation": "^1.0.0-beta.29"
+  }
+}

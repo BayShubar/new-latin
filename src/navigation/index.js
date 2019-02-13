@@ -111,23 +111,24 @@ const TabBar = TabNavigator(
         navigationOptions: ({ navigation }) => ({
           tabBarIcon: ({ focused, tintColor }) => {
             const { routeName } = navigation.state;
+            let IconComponent = Ionicons;
             let iconName;
             if (routeName === 'ArticleStack') {
-              iconName = `ios-bookmarks${focused ? '' : '-outline'}`;
+                iconName = `ios-contact`;
             } 
             else if (routeName === 'TranslationStack') {
-              iconName = `ios-globe${focused ? '' : '-outline'}`;
+                iconName = `ios-contact`;
             }
             else if (routeName === 'GameStack') {
-                iconName = `ios-game-controller-b${focused ? '' : '-outline'}`;
+                iconName = `ios-contact`;
             }
             else if(routeName ==='AlphabetStack'){
-                iconName = `ios-bulb${focused ? '' : '-outline'}`;
+                iconName = `ios-contact`;
             }
     
             // You can return any component that you like here! We usually use an
             // icon component from react-native-vector-icons
-            return <Ionicons name={iconName} size={25} color={tintColor} />;
+            return <IconComponent name={iconName} size={25} color={tintColor} />;
           },
         }),
         tabBarComponent: TabBarBottom,

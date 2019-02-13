@@ -4,9 +4,9 @@
     "description": "This app help people learn Latin Language fast and easily",
     "slug": "new-qazaq-latin",
     "privacy": "public",
-    "sdkVersion": "24.0.0",
+    "sdkVersion": "32.0.0",
     "platforms": ["ios", "android"],
-    "version": "1.0.7",
+    "version": "1.0.8",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "splash": {
@@ -16,12 +16,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "8"
+      "buildNumber": "9"
     },
     "android": {
       "package": "com.yerkebulanduisebay.newqazaqlatin",
       "permissions": [],
-      "versionCode": 8
+      "versionCode": 9
     }
   }
 }

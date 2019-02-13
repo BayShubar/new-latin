@@ -1,6 +1,9 @@
 import React from 'react'
-import {StackNavigator, TabNavigator, TabBarBottom} from 'react-navigation'
-import { Button, Text, View } from 'react-native';
+import {    
+    createStackNavigator, 
+    createAppContainer,
+    createBottomTabNavigator
+} from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons';
 import { ACTIVE_MAIN_COLOR,
         INACTIVE_MAIN_COLOR,
@@ -20,7 +23,7 @@ import LetterPlay from '../modals/LetterPlay'
 import ConstructPlay from '../modals/ConstructPlay'
 
 //==================ArticleStack======================
-const ArticleStack = StackNavigator(
+const ArticleStack = createAppContainer(createStackNavigator(
     {
         ArticlesScreen:{screen: ArticlesScreen,},
         ArticleScreen:{ screen: ArticleScreen, },
@@ -38,10 +41,10 @@ const ArticleStack = StackNavigator(
             }
         }
     },    
-)
+))
 
 //=================GameStack===================
-const GameStack = StackNavigator(
+const GameStack = createAppContainer(createStackNavigator(
     {
         GamesScreen: { screen: GamesScreen, }
     },
@@ -57,10 +60,10 @@ const GameStack = StackNavigator(
             }
         }
     }
-)
+))
 
 //=================TranslationStack===================
-const TranslationStack = StackNavigator(
+const TranslationStack = createAppContainer(createStackNavigator(
     {
         TranslationScreen: { screen: TranslationScreen, }
     },
@@ -76,10 +79,10 @@ const TranslationStack = StackNavigator(
             }
         }
     }
-)
+))
 
 //=================AlphabetStack===================
-const AlphabetStack = StackNavigator(
+const AlphabetStack = createAppContainer(createStackNavigator(
     {
         AlphabetScreen:{ screen: AlphabetScreen, }
     },
@@ -95,12 +98,12 @@ const AlphabetStack = StackNavigator(
             }
         }
     }
-)
+))
 
 //================TabBar===============================
 
 
-const TabBar = TabNavigator(
+const TabBar = createAppContainer(createBottomTabNavigator(
     {
         GameStack: { screen: GameStack,},
         ArticleStack: { screen: ArticleStack, },
@@ -108,31 +111,27 @@ const TabBar = TabNavigator(
         AlphabetStack:{ screen: AlphabetStack, }
     },
     {
-        navigationOptions: ({ navigation }) => ({
-          tabBarIcon: ({ focused, tintColor }) => {
-            const { routeName } = navigation.state;
-            let IconComponent = Ionicons;
-            let iconName;
-            if (routeName === 'ArticleStack') {
-                iconName = `ios-contact`;
-            } 
-            else if (routeName === 'TranslationStack') {
-                iconName = `ios-contact`;
-            }
-            else if (routeName === 'GameStack') {
-                iconName = `ios-contact`;
-            }
-            else if(routeName ==='AlphabetStack'){
-                iconName = `ios-contact`;
-            }
-    
-            // You can return any component that you like here! We usually use an
-            // icon component from react-native-vector-icons
-            return <IconComponent name={iconName} size={25} color={tintColor} />;
-          },
-        }),
-        tabBarComponent: TabBarBottom,
-        tabBarPosition: 'bottom',
+        initialRouteName: 'GameStack',
+        defaultNavigationOptions: ({ navigation }) => ({
+            tabBarIcon: ({ focused, horizontal, tintColor }) => {
+              const { routeName } = navigation.state;
+              let IconComponent = Ionicons;
+              let iconName;
+                if (routeName === 'ArticleStack') {
+                    iconName = `ios-paper`;
+                } 
+                else if (routeName === 'TranslationStack') {
+                    iconName = `ios-globe`;
+                }
+                else if (routeName === 'GameStack') {
+                    iconName = `ios-jet`;
+                }
+                else if(routeName ==='AlphabetStack'){
+                    iconName = `ios-bulb`;
+                }
+              return <IconComponent name={iconName} size={30} color={tintColor} />;
+            },
+          }),
         tabBarOptions: {
             showLabel: false,
             activeTintColor: ACTIVE_MAIN_COLOR,
@@ -140,14 +139,12 @@ const TabBar = TabNavigator(
             inactiveBackgroundColor: BACKGROUND_MAIN_COLOR,
             activeBackgroundColor: BACKGROUND_MAIN_COLOR,
         },
-        animationEnabled: false,
-        swipeEnabled: false,
-    } 
-)
+    }
+))
 
 
 //========================Root===========================
-export default StackNavigator(
+export default createAppContainer(createStackNavigator(
     {
         TabBar: { screen: TabBar },
         TestPlay: {screen: TestPlay},
@@ -159,5 +156,5 @@ export default StackNavigator(
         mode: 'Modal',
         headerMode: 'none',
     }
-)
+))
 
